@@ -9,3 +9,17 @@ before_install:
 
 script:
   - docker run eduluz1976/app-ui npm run test -- --coverage
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: "sa-east-1"
+  app: "my-1st-test"
+  env: "My1stTest-env"
+  bucket_name: "elasticbeanstalk-sa-east-1-780799445827"
+  bucket_path: "my-1st-test"
+  on:
+    branch: master  
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"  
